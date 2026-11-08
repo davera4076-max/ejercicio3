@@ -1,0 +1,39 @@
+[
+    {
+        "codigo": "PS-001",
+        "nombre": "Panel solar monocristalino 450 W",
+        "precio": 289.9,
+        "stock": 12,
+        "tipo": "PanelSolar",
+        "potencia_w": 450,
+        "eficiencia": 22.5
+    },
+    {
+        "codigo": "PS-002",
+        "nombre": "Panel solar policristalino 300 W",
+        "precio": 169.5,
+        "stock": 7,
+        "tipo": "PanelSolar",
+        "potencia_w": 300,
+        "eficiencia": 18.2
+    },
+    {
+        "codigo": "INV-001",
+        "nombre": "Inversor h\u00edbrido 3000 VA",
+        "precio": 649.0,
+        "stock": 5,
+        "tipo": "Inversor",
+        "potencia_salida_w": 3000,
+        "tipo_onda": "Senoidal pura"
+    },
+    {
+        "codigo": "BAT-001",
+        "nombre": "Bater\u00eda litio 200 Ah 24V",
+        "precio": 899.0,
+        "stock": 4,
+        "tipo": "Bateria",
+        "capacidad_ah": 200,
+        "voltaje_v": 24,
+        "tecnologia": "LiFePO4"
+    }
+]
