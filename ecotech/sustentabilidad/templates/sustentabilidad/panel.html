@@ -1,0 +1,111 @@
+{% comment %}
+    ============================================================
+    sustentabilidad/templates/sustentabilidad/panel.html
+    ============================================================
+    Plantilla del Panel de Sustentabilidad (Ecotech).
+
+    Renderizada por `vista_panel_sustentabilidad` (views.py)
+    en las rutas GET / y GET /panel/.
+
+    Variables que recibe desde la vista (contexto):
+    - total_global_emisiones (float): suma total de kg CO2.
+    - emisiones_por_planta (dict): emisiones por planta.
+      Se itera con {% for planta, emisiones in emisiones_por_planta.items %}
+    - planta_mayor_consumo (str|None): planta con más emisiones.
+      La fila correspondiente se destaca con clase `destacada`.
+
+    Filtros usados:
+    - |floatformat:2 -> muestra 2 decimales.
+
+    Eventos HTML:
+    - No hay formularios (solo lectura, GET). No hay botones ni inputs.
+    - La tabla resalta la fila de la planta mayor con CSS.
+    ============================================================
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Sustentabilidad - Ecotech</title>
+    <style>
+        /* Estilos generales del panel */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f0;
+            margin: 40px;
+            color: #1a3a1a;
+        }
+        .contenedor {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        h1 { color: #2e7d32; }
+        .tarjeta {
+            background: #e8f5e9;
+            border-left: 6px solid #2e7d32;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .tarjeta strong { color: #2e7d32; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #cfd8dc;
+        }
+        th { background: #2e7d32; color: white; }
+        /* Fila destacada: planta con mayor consumo */
+        tr.destacada {
+            background: #fff9c4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>🌿 Panel de Sustentabilidad</h1>
+
+        <!-- Tarjeta: total global (calculado en service.obtener_metricas_consumo) -->
+        <div class="tarjeta">
+            <strong>Total global de emisiones de carbono:</strong><br>
+            {{ total_global_emisiones|floatformat:2 }} kg CO₂
+        </div>
+
+        <!-- Tarjeta: planta con mayor consumo/emisión -->
+        <div class="tarjeta">
+            <strong>Planta con mayor consumo (emisiones):</strong><br>
+            {{ planta_mayor_consumo }}
+        </div>
+
+        <h2>Detalle por planta</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Planta</th>
+                    <th>Emisiones (kg CO₂)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# Evento: bucle que recorre el dict de emisiones por planta #}
+                {% for planta, emisiones in emisiones_por_planta.items %}
+                    {# Si es la planta mayor, se aplica la clase destacada #}
+                    <tr class="{% if planta == planta_mayor_consumo %}destacada{% endif %}">
+                        <td>{{ planta }}</td>
+                        <td>{{ emisiones|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
