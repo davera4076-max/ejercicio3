@@ -1,19 +1,9 @@
 <<<<<<< HEAD
-# Ejercicio1
-=======
-# EcoTech Solutions — Catálogo de Equipamiento Sustentable
+# Ejercicio3
 
-## 1. Objetivo
+•	Punto A: Auditoría de Algoritmo de Emisiones ( unittest ): A partir de la función calcular_emisiones_carbono(consumo_kwh, factor_emision=0.4) (la cual eleva ValueError si el consumo es negativo), implementa la clase de prueba TestCalculoEmisiones(unittest.TestCase). Diseña los casos de prueba necesarios para validar tanto la exactitud numérica del cálculo ante valores nominales como la correcta elevación de la excepción ante consumos fuera de rango.
+•	Punto B: Procesamiento de Métricas y Renderizado Web: Incorpora la función calcular_emisiones_carbono en la función obtener_metricas_consumo(registros), procesando un historial de consumos por planta industrial para determinar el total global de emisiones y la planta de mayor consumo. Por último, diseña la función de vista en Django vista_panel_sustentabilidad(request) que invoque dicho procesamiento y proporcione el diccionario de contexto listo para ser renderizado en la plantilla sustentabilidad/panel.html.
 
-Módulo de software para gestionar los productos del catálogo, impedir inconsistencias en el inventario mediante validaciones de negocio y garantizar la persistencia del stock en disco (JSON).
-
-## 2. Estructura del proyecto
-
-```
-proyecto codiciada/
-├── catalogo_ecotech.py   # Código fuente documentado (Punto A + Punto B)
-├── catalogo_ecotech.json # Archivo generado al ejecutar (persistencia)
-└── README.md             # Esta documentación
 ```
 
 ## 3. Requisitos
